@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -7,6 +7,4 @@ import { Component, signal } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.scss'
 })
-export class App {
-  protected readonly title = signal('angular-product-list');
-}
+export class AppComponent {}

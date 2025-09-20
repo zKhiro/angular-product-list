@@ -1,0 +1,19 @@
+<div>
+  <header>
+    <h1 data-testid="name">{{ name }}</h1>
+  </header>
+  <div>
+    <p data-testid="quantity">{{ quantity }}</p>
+    <p data-testid="price">{{ price }}</p>
+  </div>
+
+  <div>
+    <button
+      data-testid="btn-remove"
+      type="button"
+      (click)="removeProduct()"
+    >
+      Remover
+    </button>
+  </div>
+</div>

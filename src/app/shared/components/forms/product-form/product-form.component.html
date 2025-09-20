@@ -1,0 +1,33 @@
+<form
+  data-testid="form"
+  [formGroup]="productForm"
+  (ngSubmit)="onSubmit()"
+>
+  <app-input-wrapper label="Nome:" [control]="productForm.controls.name">
+    <input
+      data-testid="name"
+      type="text"
+      [formControl]="productForm.controls.name"
+    />
+  </app-input-wrapper>
+
+  <app-input-wrapper label="Preço:" [control]="productForm.controls.price">
+    <input
+      data-testid="price"
+      mask="separator.2"
+      prefix="R$ "
+      type="text"
+      [formControl]="productForm.controls.price"
+    />
+  </app-input-wrapper>
+
+  <app-input-wrapper label="Quantidade:" [control]="productForm.controls.quantity">
+    <input
+      data-testid="quantity"
+      type="number"
+      [formControl]="productForm.controls.quantity"
+    />
+  </app-input-wrapper>
+
+  <button data-testid="btn-submit" type="submit">Salvar</button>
+</form>

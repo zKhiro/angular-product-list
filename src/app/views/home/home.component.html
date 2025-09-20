@@ -1,0 +1,31 @@
+@if (showProductForm) {
+  <app-product-form></app-product-form>
+} @else {
+  <button type="button" (click)="showProductForm = true">Adicionar Produto</button>
+}
+
+
+<div>
+  <form [formGroup]="searchForm" (ngSubmit)="search()">
+    <label>
+      Buscar:
+
+      <input type="text" [formControl]="searchForm.controls.search" />
+    </label>
+
+    <button type="submit">Buscar</button>
+  </form>
+</div>
+
+@if (productsService.products.length) {
+  <section data-testid="product-card-list">
+    @for (product of productsService.products; track $index) {
+      <app-card-product
+        [index]="$index"
+        [name]="product.name"
+        [price]="product.price"
+        [quantity]="product.quantity"
+      ></app-card-product>
+    }
+  </section>
+}

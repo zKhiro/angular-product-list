@@ -1,0 +1,8 @@
+<label>
+  <span>{{ label }}</span>
+  <ng-content></ng-content>
+
+  @if (control.invalid && (control.dirty || control.touched)) {
+    <p data-testid="error-msg">{{ getErrorMsg }}</p>
+  }
+</label>
