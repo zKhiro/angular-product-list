@@ -24,7 +24,7 @@ import { ProductFormComponent } from './product-form.component';
     ProductFormComponent,
   ],
   providers: [
-    provideNgxMask({ thousandSeparator: '.', decimalMarker: ',', leadZero: true }),
+    provideNgxMask({ thousandSeparator: '.', decimalMarker: ',' }),
   ]
 })
 export class ProductFormModule { }

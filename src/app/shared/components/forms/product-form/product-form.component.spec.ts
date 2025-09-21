@@ -64,7 +64,7 @@ describe('ProductFormComponent', () => {
   });
 
   it('should add product when form is valid', () => {
-    const btnSubmit: HTMLButtonElement = fixture.nativeElement.querySelector('[data-testid=btn-submit]');
+    const btnSubmit: HTMLButtonElement = fixture.nativeElement.querySelector('[data-testid=form-btn-submit]');
 
     spyOn(component.productsService, 'addProduct');
 

@@ -5,7 +5,7 @@
 >
   <app-input-wrapper label="Nome:" [control]="productForm.controls.name">
     <input
-      data-testid="name"
+      data-testid="form-name"
       type="text"
       [formControl]="productForm.controls.name"
     />
@@ -13,9 +13,9 @@
 
   <app-input-wrapper label="Preço:" [control]="productForm.controls.price">
     <input
-      data-testid="price"
+      data-testid="form-price"
       mask="separator.2"
-      prefix="R$ "
+      prefix="R$"
       type="text"
       [formControl]="productForm.controls.price"
     />
@@ -23,11 +23,11 @@
 
   <app-input-wrapper label="Quantidade:" [control]="productForm.controls.quantity">
     <input
-      data-testid="quantity"
+      data-testid="form-quantity"
       type="number"
       [formControl]="productForm.controls.quantity"
     />
   </app-input-wrapper>
 
-  <button data-testid="btn-submit" type="submit">Salvar</button>
+  <button data-testid="form-btn-submit" type="submit">Salvar</button>
 </form>
