@@ -1,3 +1,4 @@
+import { DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ProductsService } from '@services';
@@ -12,7 +13,10 @@ describe('CardProductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CardProductComponent],
-      providers: [ProductsService],
+      providers: [
+        ProductsService,
+        { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+      ],
     })
     .compileComponents();
 
@@ -46,8 +50,8 @@ describe('CardProductComponent', () => {
       .toEqual('test-name');
 
     expect(priceEl)
-      .withContext('price should be equal to "1.99"')
-      .toEqual('1.99');
+      .withContext('price should be equal to "R$1.99"')
+      .toEqual('R$1.99');
 
     expect(quantityEl)
       .withContext('quantity should be equal to "1"')
