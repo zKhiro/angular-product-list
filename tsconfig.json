@@ -23,6 +23,9 @@
       "@services": [
         "src/app/core/services"
       ],
+      "@utils": [
+        "src/app/core/utils"
+      ],
       "@models/*": [
         "src/app/core/models/*"
       ],

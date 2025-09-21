@@ -14,7 +14,7 @@ export class InputWrapperComponent {
 
   readonly errorMsgs: { [key: string]: string } = {
     required: 'Campo obrigatório.',
-    min: 'O valor não pode ser negativo.',
+    min: 'Este valor é incabível.',
   }
 
 

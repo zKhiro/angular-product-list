@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '@services';
+import { CustomValidators } from '@utils';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { ProductsService } from '@services';
 export class ProductFormComponent {
   productForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required], nonNullable: true }),
-    price: new FormControl('', { validators: [Validators.required, Validators.min(0)], nonNullable: true }),
+    price: new FormControl('', { validators: [Validators.required, CustomValidators.floatMin(0)], nonNullable: true }),
     quantity: new FormControl('', { validators: [Validators.required, Validators.min(0)], nonNullable: true }),
   });
 
