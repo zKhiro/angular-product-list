@@ -36,6 +36,21 @@ describe('App Test', () => {
       .should('contain', 'Campo obrigatório.');
   });
 
+  it('Price input should inform its required to have value bigger then 0', () => {
+    cy.get('[data-testid=btn-show-form-new-product]').click();
+
+    cy.get('[data-testid=form-name]').type('test a');
+    cy.get('[data-testid=form-quantity]').type('1');
+
+    cy.get('[data-testid=form-price]').type('0');
+
+    cy.get('[data-testid=form-btn-submit]').click();
+
+    cy.get('[data-testid=error-msg]')
+      .should('have.lengthOf', '1')
+      .should('contain', 'Este valor é incabível.');
+  });
+
   it('Should remove a product', () => {
     cy.get('[data-testid=btn-show-form-new-product]').click();
 
