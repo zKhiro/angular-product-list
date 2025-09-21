@@ -12,8 +12,8 @@ import { ProductsService } from '@services';
 export class ProductFormComponent {
   productForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required], nonNullable: true }),
-    price: new FormControl(0, { validators: [Validators.required, Validators.min(0)], nonNullable: true }),
-    quantity: new FormControl(0, { validators: [Validators.required, Validators.min(0)], nonNullable: true }),
+    price: new FormControl('', { validators: [Validators.required, Validators.min(0)], nonNullable: true }),
+    quantity: new FormControl('', { validators: [Validators.required, Validators.min(0)], nonNullable: true }),
   });
 
   productsService: ProductsService = inject(ProductsService);
@@ -26,9 +26,9 @@ export class ProductFormComponent {
     if (this.productForm.valid) {
       this.productsService.addProduct({
         name: this.productForm.controls.name.value,
-        price: this.productForm.controls.price.value,
-        quantity: this.productForm.controls.quantity.value,
-      })
+        price: +this.productForm.controls.price.value,
+        quantity: +this.productForm.controls.quantity.value,
+      });
     }
   }
 }
