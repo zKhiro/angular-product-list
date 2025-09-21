@@ -1,7 +1,13 @@
 @if (showProductForm) {
   <app-product-form></app-product-form>
 } @else {
-  <button type="button" (click)="showProductForm = true">Adicionar Produto</button>
+  <button
+    data-testid="btn-show-form-new-product"
+    type="button"
+    (click)="showProductForm = true"
+  >
+    Adicionar Produto
+  </button>
 }
 
 
@@ -10,10 +16,14 @@
     <label>
       Buscar:
 
-      <input type="text" [formControl]="searchForm.controls.search" />
+      <input
+        data-testid="search-input"
+        type="text"
+        [formControl]="searchForm.controls.search"
+      />
     </label>
 
-    <button type="submit">Buscar</button>
+    <button data-testid="search-btn" type="submit">Buscar</button>
   </form>
 </div>
 
