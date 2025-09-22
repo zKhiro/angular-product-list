@@ -44,18 +44,22 @@
   </button>
 </form>
 
-@if (productsService.products.length) {
-  <section class="products-section gap-5 mt-6" data-testid="product-card-list">
-    @for (product of productsService.products; track $index) {
-      <app-card-product
-        [index]="$index"
-        [name]="product.name"
-        [price]="product.price"
-        [quantity]="product.quantity"
-      ></app-card-product>
-    }
-  </section>
-}
+<section class="mt-6">
+  @if (productsService.products.length) {
+    <div class="products-section gap-5" data-testid="product-card-list">
+      @for (product of productsService.products; track $index) {
+        <app-card-product
+          [index]="$index"
+          [name]="product.name"
+          [price]="product.price"
+          [quantity]="product.quantity"
+        ></app-card-product>
+      }
+    </div>
+  } @else {
+    <app-empty-state></app-empty-state>
+  }
+</section>
 
 
 <app-lateral-dialog [(showDialog)]="showNewProductDialog">
