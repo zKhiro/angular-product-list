@@ -25,7 +25,7 @@ Para executar os testes, use o seguinte comando:
 npm run test
 ```
 
-Ao termino da execução do comando, um servidor Karma será iniciado e para acessa-lo bastar ir até ao seu navegador e inserir o endereço `http://localhost:9876/`.
+Ao termino da execução do comando, um servidor Karma será iniciado e para acessa-lo bastar ir até ao seu navegador e inserir o endereço informado em seu terminal.
 
 ## Testes e2e
 
