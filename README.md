@@ -1,59 +1,48 @@
-# AngularProductList
+# Angular Product List
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+Para iniciar o projeto, primeiro você deve possuir [Node](https://nodejs.org/en/download) instalado em sua máquina.
 
-## Development server
-
-To start a local development server, run:
+Com Node instaldo, o próximo passo é instalar as dependências com o seguinte comando:
 
 ```bash
-ng serve
+npm i
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Ao finalizar a instalação das dependências você poderá rodar o projeto com o seguinto comando:
 
 ```bash
-ng generate component component-name
+npm start
 ```
+Com o projeto rodando, você agora pode acessa-lo através do endereço `http://localhost:4200/` em seu navegador de preferência.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Testes Unitários
+
+Este projeto possui alguns testes escritos em conjunto com [Karma](https://karma-runner.github.io) e [Jasmine](https://jasmine.github.io).
+
+Para executar os testes, use o seguinte comando:
 
 ```bash
-ng generate --help
+npm run test
 ```
 
-## Building
+Ao termino da execução do comando, um servidor Karma será iniciado e para acessa-lo bastar ir até ao seu navegador e inserir o endereço `http://localhost:9876/`.
 
-To build the project run:
+## Testes e2e
+
+Este projeto possui alguns testes escritos utilizando [Cypress](https://www.cypress.io).
+
+Para rodar os teste primeiro você deve se certificar que o projeto está rodando localmente. Com o projeto rodando, execute o comando:
 
 ```bash
-ng build
+npm run e2e
 ```
+Executando esse comando irá abrir uma aplicação do Cypress, selecione a opção **E2E testing** e então escolha o navegador de preferência.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Com o Cypress aberto em **Specs**, selecione o arquivo `app.cy.ts` e isso dará inicio aos testes.
 
-## Running unit tests
+## Informações adicionais
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Eu fiz um protótipo com Figma para planejar o design do projeto.
+Este protótipo está disponível [aqui](https://www.figma.com/design/D78HS57ftHsIykk9Wna3un/Angular-Product-List?m=auto&t=9VIZgeBzJYRpk9Zk-1).
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Os ícones utilizados são da biblioteca [Scarlab](https://scarlab-icons.la-moore.ru).
