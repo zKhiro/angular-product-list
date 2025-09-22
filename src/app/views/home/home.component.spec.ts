@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  CardProductModule, InputWrapperModule, LateralDialogModule, ProductFormModule,
+  CardProductModule, EmptyStateModule, InputWrapperModule, LateralDialogModule, ProductFormModule,
 } from '@components';
 import { ProductsService } from '@services';
 
@@ -20,6 +20,7 @@ describe('HomeComponent', () => {
       imports: [
         ReactiveFormsModule,
         CardProductModule,
+        EmptyStateModule,
         InputWrapperModule,
         LateralDialogModule,
         ProductFormModule,
