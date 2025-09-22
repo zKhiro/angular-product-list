@@ -1,10 +1,15 @@
 <div
   class="dialog-backdrop"
+  data-testid="dialog-backdrop"
   [class.show]="showDialog"
-  (click)="showDialog = false"
+  (click)="changeShowDialog(false)"
 ></div>
 
-<div class="dialog-body" [class.show]="showDialog">
+<div
+  class="dialog-body"
+  data-testid="dialog-body"
+  [class.show]="showDialog"
+>
   <div class="position-relative p-5">
     <header class="mb-4">
       <ng-content select="[dialog-title]"></ng-content>
@@ -14,8 +19,9 @@
 
     <button
       class="btn btn-danger btn-close-dialog text-light shadow-danger"
+      data-testid="dialog-btn-close"
       type="button"
-      (click)="showDialog = false"
+      (click)="changeShowDialog(false)"
     >
       <svg viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" color="currentColor" width="24" height="24"><path d="M7 7L17 17"></path><path d="M17 7L7 17"></path></svg>
     </button>

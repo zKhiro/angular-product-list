@@ -72,6 +72,6 @@ describe('ProductFormComponent', () => {
 
     btnSubmit.click();
 
-    expect(component.productsService.addProduct).toHaveBeenCalledWith(productForm.value);
+    expect(component.productsService.addProduct).toHaveBeenCalledWith(validFormMock);
   });
 });

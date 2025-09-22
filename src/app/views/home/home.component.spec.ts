@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardProductModule, InputWrapperModule, ProductFormModule } from '@components';
+import {
+  CardProductModule, InputWrapperModule, LateralDialogModule, ProductFormModule,
+} from '@components';
 import { ProductsService } from '@services';
 
 import { HomeComponent } from './home.component';
@@ -19,6 +21,7 @@ describe('HomeComponent', () => {
         ReactiveFormsModule,
         CardProductModule,
         InputWrapperModule,
+        LateralDialogModule,
         ProductFormModule,
       ],
       providers: [ProductsService]
@@ -57,5 +60,14 @@ describe('HomeComponent', () => {
     const productCardListEl: HTMLElement = fixture.nativeElement.querySelector('[data-testid=product-card-list]');
 
     expect(productCardListEl).toBeFalsy();
+  });
+
+  it('badge total product should show a number of total product', () => {
+    component.productsService.loadProducts();
+    fixture.detectChanges();
+
+    const badgeTotalProducts: HTMLElement = fixture.nativeElement.querySelector('[data-testid=badge-total-products]');
+
+    expect(badgeTotalProducts.textContent).toContain(component.productsService.products.length);
   });
 });

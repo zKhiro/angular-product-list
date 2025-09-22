@@ -38,7 +38,7 @@ describe('CardProductComponent', () => {
     fixture.detectChanges();
 
     const nameEl = fixture.nativeElement.querySelector('[data-testid=name]')?.textContent;
-    const priceEl = fixture.nativeElement.querySelector('[data-testid=price]')?.textContent;
+    const priceEl = fixture.nativeElement.querySelector('[data-testid=price]')?.textContent.trim();
     const quantityEl = fixture.nativeElement.querySelector('[data-testid=quantity]')?.textContent;
 
     expect(component.index)
@@ -50,8 +50,8 @@ describe('CardProductComponent', () => {
       .toEqual('test-name');
 
     expect(priceEl)
-      .withContext('price should be equal to "R$1.99"')
-      .toEqual('R$1.99');
+      .withContext('price should be equal to "R$ 1,99"')
+      .toEqual('R$ 1,99');
 
     expect(quantityEl)
       .withContext('quantity should be equal to "1"')

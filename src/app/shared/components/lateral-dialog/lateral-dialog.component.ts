@@ -11,20 +11,17 @@ export class LateralDialogComponent {
   @Input() dialogTitle: string;
 
   @Input() set showDialog(newValue: boolean) {
-    this._showDialog = newValue;
+    if (this._showDialog != newValue) {
+      this._showDialog = newValue;
 
-    const body = document.querySelector('body');
+      const body = document.querySelector('body');
 
-    if (newValue) {
-      this.renderer.addClass(body, 'occult-scroll');
-    } else {
-      this.renderer.removeClass(body, 'occult-scroll');
+      if (newValue) {
+        this.renderer.addClass(body, 'occult-scroll');
+      } else {
+        this.renderer.removeClass(body, 'occult-scroll');
+      }
     }
-
-    // Espera animação finalizar.
-    setTimeout(() => {
-      this.showDialogChange.emit(newValue);
-    }, 200);
   };
   @Output() showDialogChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -34,5 +31,14 @@ export class LateralDialogComponent {
   }
 
   constructor(private readonly renderer: Renderer2) {}
+
+  changeShowDialog(value: boolean): void {
+    this.showDialog = value;
+
+    // Espera animação finalizar.
+    setTimeout(() => {
+      this.showDialogChange.emit(this.showDialog);
+    }, 200);
+  }
 
 }

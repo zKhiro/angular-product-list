@@ -4,26 +4,37 @@ describe('App Test', () => {
   });
 
   it('Should add a product', () => {
-    cy.get('[data-testid=btn-show-form-new-product]').click();
+    cy.get('[data-testid=btn-show-form-new-product]').click().then(() => {
+      cy.get('[data-testid=form-name]')
+        .as('form-name')
+        .should('be.visible');
+      cy.get('[data-testid=form-price]')
+        .as('form-price')
+        .should('be.visible');
+      cy.get('[data-testid=form-quantity]')
+        .as('form-quantity')
+        .should('be.visible');
 
-    const formNameEl = cy.get('[data-testid=form-name]');
-    const formPriceEl = cy.get('[data-testid=form-price]');
-    const formQuantityEl = cy.get('[data-testid=form-quantity]');
+      cy.get('@form-name').focus();
+      cy.get('@form-name').type('test a');
 
-    formNameEl.type('test a');
-    formNameEl.should('have.value', 'test a');
+      cy.get('@form-price').focus();
+      cy.get('@form-price').type('1,99');
 
-    formPriceEl.type('1,99');
-    formPriceEl.should('have.value', 'R$1,99');
+      cy.get('@form-quantity').focus();
+      cy.get('@form-quantity').type('1');
 
-    formQuantityEl.type('1');
-    formQuantityEl.should('have.value', '1');
+      cy.get('@form-name').should('have.value', 'test a');
+      cy.get('@form-price').should('have.value', 'R$1,99');
+      cy.get('@form-quantity').should('have.value', '1');
 
-    cy.get('[data-testid=form-btn-submit]').click();
+      cy.get('[data-testid=form-btn-submit]').click();
 
-    cy.get('[data-testid=product-card-list]').as('product-list').should('contain', 'test a');
-    cy.get('@product-list').should('contain', '1.99');
-    cy.get('@product-list').should('contain', '1');
+      cy.get('[data-testid=product-card-list]')
+        .should('contain', 'test a')
+        .should('contain', '1,99')
+        .should('contain', '1');
+    });
   });
 
   it('Input should inform its required', () => {
@@ -54,15 +65,16 @@ describe('App Test', () => {
   it('Should remove a product', () => {
     cy.get('[data-testid=btn-show-form-new-product]').click();
 
-    const formNameEl = cy.get('[data-testid=form-name]');
-    const formPriceEl = cy.get('[data-testid=form-price]');
-    const formQuantityEl = cy.get('[data-testid=form-quantity]');
+    cy.get('[data-testid=form-name]').as('form-name');
+    cy.get('[data-testid=form-price]').as('form-price');
+    cy.get('[data-testid=form-quantity]').as('form-quantity');
 
-    formNameEl.type('test a');
-    formPriceEl.type('1,99');
-    formQuantityEl.type('1');
+    cy.get('@form-name').type('test a');
+    cy.get('@form-price').type('1,99');
+    cy.get('@form-quantity').type('1');
 
     cy.get('[data-testid=form-btn-submit]').click();
+    cy.get('[data-testid=dialog-btn-close]').click();
 
     cy.get('[data-testid=btn-remove]').click();
     cy.get('[data-testid=product-card-list]').should("not.exist");
@@ -71,25 +83,27 @@ describe('App Test', () => {
   it('Should search a product', () => {
     cy.get('[data-testid=btn-show-form-new-product]').click();
 
-    const formNameEl = cy.get('[data-testid=form-name]');
-    const formPriceEl = cy.get('[data-testid=form-price]');
-    const formQuantityEl = cy.get('[data-testid=form-quantity]');
+    cy.get('[data-testid=form-name]').as('form-name');
+    cy.get('[data-testid=form-price]').as('form-price');
+    cy.get('[data-testid=form-quantity]').as('form-quantity');
 
     for (let i = 0; i <= 1; i++) {
-      formNameEl.clear();
-      formNameEl.type(`test ${i}`);
-      formNameEl.should('have.value', `test ${i}`);
+      cy.get('@form-name').clear();
+      cy.get('@form-name').type(`test ${i}`);
+      cy.get('@form-name').should('have.value', `test ${i}`);
 
-      formPriceEl.clear();
-      formPriceEl.type('1,99');
-      formPriceEl.should('have.value', 'R$1,99');
+      cy.get('@form-price').clear();
+      cy.get('@form-price').type('1,99');
+      cy.get('@form-price').should('have.value', 'R$1,99');
 
-      formQuantityEl.clear();
-      formQuantityEl.type('1');
-      formQuantityEl.should('have.value', '1');
+      cy.get('@form-quantity').clear();
+      cy.get('@form-quantity').type('1');
+      cy.get('@form-quantity').should('have.value', '1');
 
       cy.get('[data-testid=form-btn-submit]').click();
     }
+
+    cy.get('[data-testid=dialog-btn-close]').click();
 
     cy.get('[data-testid=search-input]').type('1');
     cy.get('[data-testid=search-btn]').click();
@@ -99,7 +113,7 @@ describe('App Test', () => {
       .children()
       .should('have.lengthOf', '1');
 
-    cy.get('@product-list').should('contain', '1.99');
+    cy.get('@product-list').should('contain', '1,99');
     cy.get('@product-list').should('contain', '1');
   });
 });
