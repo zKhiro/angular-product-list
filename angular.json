@@ -4,6 +4,9 @@
   "newProjectRoot": "projects",
   "projects": {
     "angular-product-list": {
+      "i18n": {
+        "sourceLocale": "pt-BR"
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -37,8 +40,14 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
-            ]
+              "src/scss/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss/abstracts/",
+                "."
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -95,8 +104,14 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss/abstracts/",
+                "."
+              ]
+            },
             "karmaConfig": "karma.conf.js"
           }
         }

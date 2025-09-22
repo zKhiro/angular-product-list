@@ -1,0 +1,16 @@
+@use "sass:math";
+
+@use "variables/typography";
+
+
+@function convert-px-to-rem($value) {
+  @return #{math.div($value, typography.$font-size-root)}rem;
+}
+
+@function box-shadow($color) {
+  @return 0 convert-px-to-rem(2) convert-px-to-rem(4) rgba($color, .4);
+}
+
+@function box-shadow-hover($color) {
+  @return 0 convert-px-to-rem(2) convert-px-to-rem(4) rgba($color, .6);
+}

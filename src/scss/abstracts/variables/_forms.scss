@@ -1,0 +1,25 @@
+@use "sass:map";
+
+@use "../functions" as fun;
+@use "borders";
+@use "colors";
+
+
+$padding-y: .5rem;
+$padding-x: .75rem;
+$font-weight: 600;
+
+$bg-color:        colors.$white;
+$color:           map.get(colors.$theme, "dark");
+
+$border-color:    map.get(colors.$theme, "gray-light");
+$border-radius:   borders.$border-radius-sm;
+$border-width:    fun.convert-px-to-rem(1);
+$box-shadow:      fun.box-shadow($border-color);
+
+$focus-border-color:  map.get(colors.$theme, "primary");
+$focus-box-shadow:    fun.box-shadow($focus-border-color);
+
+
+$placeholder-font-weight: 400;
+$placeholder-color:       map.get(colors.$theme, "gray-dark")

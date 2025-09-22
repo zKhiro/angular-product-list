@@ -25,7 +25,7 @@ export class ProductsService {
   }
 
   removeProduct(index: number): void {
-    this.products.splice(index);
+    this.products.splice(index, 1);
 
     this.localStoredProducts = this.products;
   }

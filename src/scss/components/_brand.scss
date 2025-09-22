@@ -1,0 +1,34 @@
+@use "sass:map";
+
+@use "../abstracts/variables/typography" as typo;
+@use "../abstracts/functions" as fun;
+@use "../abstracts/variables/colors";
+@use "../abstracts/variables/brand";
+
+
+.brand {
+  background-color: map.get(colors.$theme, "primary");
+  display: flex;
+  flex-direction: column;
+  font-family: typo.$font-family-brand;
+  font-weight: 400;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  width: brand.$width;
+
+  > .brand-title {
+    font-size: fun.convert-px-to-rem(154);
+    font-weight: inherit;
+    line-height: 1.3em;
+    word-break: break-all;
+  }
+
+  > .brand-store {
+    font-size: typo.$h1-font-size;
+    font-weight: inherit;
+  }
+}

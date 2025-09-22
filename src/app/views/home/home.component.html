@@ -1,34 +1,50 @@
-@if (showProductForm) {
-  <app-product-form></app-product-form>
-} @else {
+<header class="d-flex mt-2 mb-6">
+  <h2 class="mb-0 me-3">Produtos</h2>
+
+  <div
+    class="badge bg-primary text-light align-self-center"
+    title="{{ totalProducts }} produto{{ totalProducts != 1 ? 's' : '' }}"
+  >
+    {{ totalProducts }}
+  </div>
+
   <button
+    class="btn btn-primary ms-auto align-self-center shadow-primary"
     data-testid="btn-show-form-new-product"
     type="button"
-    (click)="showProductForm = true"
+    (click)="showNewProductDialog = true"
   >
-    Adicionar Produto
+    <svg viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" color="currentColor" width="16" height="16"><path d="M5 12H19"></path><path d="M12 5L12 19"></path></svg>
+
+    Novo Produto
   </button>
-}
+</header>
 
 
-<div>
-  <form [formGroup]="searchForm" (ngSubmit)="search()">
-    <label>
-      Buscar:
 
-      <input
-        data-testid="search-input"
-        type="text"
-        [formControl]="searchForm.controls.search"
-      />
-    </label>
+<form [formGroup]="searchForm" (ngSubmit)="search()">
+  <input
+    data-testid="search-input"
+    class="form-control"
+    name="search"
+    placeholder="Buscar"
+    type="text"
+    [formControl]="searchForm.controls.search"
+  />
 
-    <button data-testid="search-btn" type="submit">Buscar</button>
-  </form>
-</div>
+  <button
+    data-testid="search-btn"
+    class="btn btn-primary shadow-primary mt-3"
+    type="submit"
+  >
+    <svg viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" color="currentColor" width="14" height="14"><path d="M15 15L21 21"></path><path d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"></path></svg>
+
+    Buscar
+  </button>
+</form>
 
 @if (productsService.products.length) {
-  <section data-testid="product-card-list">
+  <section class="products-section gap-5 mt-6" data-testid="product-card-list">
     @for (product of productsService.products; track $index) {
       <app-card-product
         [index]="$index"
@@ -39,3 +55,16 @@
     }
   </section>
 }
+
+
+<app-lateral-dialog [(showDialog)]="showNewProductDialog">
+  <h3 class="d-flex align-items-center gap-2" dialog-title>
+    <svg viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" color="currentColor" width="24" height="24"><path d="M9 12H15"></path><path d="M12 9L12 15"></path><path d="M3 12C3 4.5885 4.5885 3 12 3C19.4115 3 21 4.5885 21 12C21 19.4115 19.4115 21 12 21C4.5885 21 3 19.4115 3 12Z"></path></svg>
+
+    Novo Produto
+  </h3>
+
+  @if (showNewProductDialog) {
+    <app-product-form dialog-content></app-product-form>
+  }
+</app-lateral-dialog>

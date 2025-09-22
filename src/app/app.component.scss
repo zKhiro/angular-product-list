@@ -1,0 +1,12 @@
+@use "functions" as fun;
+@use "variables/brand";
+
+
+main {
+  padding-left: brand.$width;
+}
+
+.content {
+  background-color: #F9F9FB;
+  border-radius: fun.convert-px-to-rem(48);
+}

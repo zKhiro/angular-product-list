@@ -1,0 +1,68 @@
+@use "sass:map";
+@use "functions" as fun;
+@use "variables/colors";
+@use "variables/buttons" as btn;
+
+$z-index: 1000;
+$bg-color: map.get(colors.$theme, "dark");
+$border-color: map.get(colors.$theme, "primary");
+$transform-duration: .2s;
+
+
+.dialog-backdrop {
+  background-color: rgba($bg-color, 0);
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: background-color $transform-duration ease-in-out,
+              width $transform-duration ease-in-out;
+  width: 100%;
+  z-index: $z-index;
+
+  &.show {
+    background-color: rgba($bg-color, .5);
+    pointer-events: all;
+    width: calc(100% - 48px);
+  }
+}
+
+.dialog-body {
+  border-left: fun.convert-px-to-rem(16) solid $border-color;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(101%);
+  transition: transform $transform-duration ($transform-duration * .5) ease-out,
+              box-shadow $transform-duration $transform-duration;
+  width: fun.convert-px-to-rem(604);
+  z-index: $z-index + 10;
+
+  > .position-relative {
+    background-color: colors.$white;
+    height: inherit;
+  }
+
+  &.show {
+    box-shadow: 0px 0px fun.convert-px-to-rem(16) rgba($border-color, .5);
+    transform: translateX(0);
+
+    .btn-close-dialog {
+      transform: translateX(-100%);
+      transition-delay: transform $transform-duration * 2;
+    }
+  }
+}
+
+.btn-close-dialog {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform $transform-duration $transform-duration ease-out,
+              btn.$btn-transition;
+  z-index: -1;
+}

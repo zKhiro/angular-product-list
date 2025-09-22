@@ -1,0 +1,9 @@
+@use "../abstracts/functions" as fun;
+@use "../abstracts/variables/buttons";
+
+.btn {
+  align-items: center;
+  display: flex;
+  gap: fun.convert-px-to-rem(4);
+  letter-spacing: buttons.$letter-spacing;
+}

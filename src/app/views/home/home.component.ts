@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   productsService: ProductsService = inject(ProductsService);
 
-  showProductForm: boolean = false
+  showNewProductDialog: boolean = false;
 
 
   constructor() {}
@@ -29,4 +29,7 @@ export class HomeComponent implements OnInit {
   search(): void {
     this.productsService.loadProducts(this.searchForm.value.search);
   }
+
+
+  get totalProducts(): number { return this.productsService.products.length }
 }

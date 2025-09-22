@@ -1,0 +1,15 @@
+@use "sass:map";
+
+@use "../abstracts/variables/colors";
+@use "../abstracts/functions" as fun;
+
+
+@each $name, $color in colors.$theme {
+  .shadow-#{$name} {
+    box-shadow: fun.box-shadow($color);
+
+    &:hover {
+      box-shadow: fun.box-shadow-hover($color);
+    }
+  }
+}

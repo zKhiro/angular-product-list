@@ -1,0 +1,4 @@
+@use "../functions" as fun;
+
+
+$width: fun.convert-px-to-rem(210);

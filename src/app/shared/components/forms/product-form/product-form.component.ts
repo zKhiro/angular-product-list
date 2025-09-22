@@ -30,6 +30,8 @@ export class ProductFormComponent {
         price: +this.productForm.controls.price.value,
         quantity: +this.productForm.controls.quantity.value,
       });
+
+      this.productForm.reset();
     }
   }
 }

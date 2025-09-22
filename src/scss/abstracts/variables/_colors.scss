@@ -1,0 +1,26 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+
+
+$white:           #FFF;
+$primary:         #4039AC;
+$primary-muted:   #5B578E;
+$danger:          #DE3562;
+
+$text-dark:    #151621;
+$text-light:   #F0F0FA;
+
+$gray-dark:    #5E6078;
+$gray-light:   #D7D8E0;
+
+
+$theme: (
+  "primary":      $primary,
+  "secondary":    $primary-muted,
+  "dark":         $text-dark,
+  "light":        $text-light,
+  "gray-dark":    $gray-dark,
+  "gray-light":   $gray-light,
+  "danger":       $danger,
+);

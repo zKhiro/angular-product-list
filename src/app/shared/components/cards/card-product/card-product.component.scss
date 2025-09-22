@@ -1,0 +1,57 @@
+@use "sass:map";
+
+@use "functions" as fun;
+@use "variables/colors";
+
+
+$transition-duration: .15s;
+$transition-duration: .15s;
+
+
+.card-product {
+  background-color: colors.$white;
+  border: fun.convert-px-to-rem(1) solid map.get(colors.$theme, "gray-light");
+  box-shadow: fun.box-shadow(map.get(colors.$theme, "gray-light"));
+  display: flex;
+  flex-direction: column;
+
+  transition: background $transition-duration ease-out,
+              border $transition-duration ease-in,
+              box-shadow $transition-duration ease-in,
+              color $transition-duration ease-out;
+
+  &:hover {
+    background-color: map.get(colors.$theme, "light");
+    border-color: map.get(colors.$theme, "primary");
+    box-shadow: fun.box-shadow-hover(map.get(colors.$theme, "primary"));
+    color: map.get(colors.$theme, "primary");
+
+    .product-details {
+      color: map.get(colors.$theme, "secondary");
+    }
+  }
+}
+
+.product-details {
+  color: map.get(colors.$theme, "gray-dark");
+
+  transition: color $transition-duration ease-out;
+}
+
+.stock {
+  font-size: fun.convert-px-to-rem(14);
+
+  > span {
+    font-size: fun.convert-px-to-rem(16);
+  }
+}
+
+.currency {
+  font-size: fun.convert-px-to-rem(14);
+}
+
+.btn-danger {
+  position: absolute;
+  right: fun.convert-px-to-rem(-8);
+  top: fun.convert-px-to-rem(-8);
+}

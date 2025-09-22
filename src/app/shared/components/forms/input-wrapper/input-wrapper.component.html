@@ -1,8 +1,8 @@
-<label>
+<label class="form-label d-flex flex-column">
   <span>{{ label }}</span>
   <ng-content></ng-content>
 
   @if (control.invalid && (control.dirty || control.touched)) {
-    <p data-testid="error-msg">{{ getErrorMsg }}</p>
+    <p class="text-danger fw-medium mb-0" data-testid="error-msg">{{ getErrorMsg }}</p>
   }
 </label>
